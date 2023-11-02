@@ -14,8 +14,12 @@ router.delete('/delete/:id', AuthorizedByAdmin, languageController.deleteLanguag
 
 //Route for one language
 router.get('/list-one/:id', verifyToken, languageController.getOneLanguage);
+
 // Route for getting all language
 router.get('/list-all', verifyToken, languageController.getAllLanguages);
+
+//Route for user language
+router.get('/get-user-languages', verifyToken, languageController.getUserLanguages);
 
 // Route for the leaderboard list by language
 router.get('/leaderboard-list', verifyToken, languageController.getLanguageLeaderboard);

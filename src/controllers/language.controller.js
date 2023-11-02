@@ -10,6 +10,20 @@ const getAllLanguages = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+const getUserLanguages = async (req, res) => {
+  try {
+    const userId = req.user.id; 
+    const savedUser = await User.findById(userId);
+
+    const languageIds = savedUser.languageProficiency.map(item => item.languageId);
+    const languages = await Language.find({ _id: { $in: languageIds } });
+
+    res.status(200).json(languages);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
 // Controller to fetch one  languages
 const getOneLanguage = async (req, res) => {
   try {
@@ -90,5 +104,6 @@ module.exports = {
   updateLanguage,
   deleteLanguage,
   getLanguageLeaderboard,
-  getOneLanguage
+  getOneLanguage,
+  getUserLanguages
 };

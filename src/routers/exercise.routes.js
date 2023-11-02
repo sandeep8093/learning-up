@@ -4,7 +4,7 @@ const exerciseController = require('../controllers/exercise.controller');
 const {verifyToken, AuthorizedByAdmin} = require('../middlewares/index')
 
 // Route for fetching exercises by language
-router.get('/get', verifyToken, exerciseController.getExercisesByLanguage);
+router.get('/get', exerciseController.getExercisesByLanguage);
 
 // Route for submitting user's answer
 router.post('/submit', verifyToken, exerciseController.submitAnswer);

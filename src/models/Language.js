@@ -7,6 +7,7 @@ const languageSchema = new schema({
         type:String,
         required:true
     },
+    imageUrl:String,
     exercises: [{
         type: schema.Types.ObjectId,
         ref: 'Exercise'

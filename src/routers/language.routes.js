@@ -12,6 +12,8 @@ router.put('/update/:id', AuthorizedByAdmin, languageController.updateLanguage);
 // Route for deleting an language
 router.delete('/delete/:id', AuthorizedByAdmin, languageController.deleteLanguage);
 
+//Route for one language
+router.get('/list-one/:id', verifyToken, languageController.getOneLanguage);
 // Route for getting all language
 router.get('/list-all', verifyToken, languageController.getAllLanguages);
 

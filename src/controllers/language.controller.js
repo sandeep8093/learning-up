@@ -10,6 +10,16 @@ const getAllLanguages = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+// Controller to fetch one  languages
+const getOneLanguage = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const languages = await Language.findById(id);
+    res.status(200).json(languages);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
 
 // Controller to add a new language
 const addLanguage = async (req, res) => {
@@ -79,5 +89,6 @@ module.exports = {
   addLanguage,
   updateLanguage,
   deleteLanguage,
-  getLanguageLeaderboard
+  getLanguageLeaderboard,
+  getOneLanguage
 };

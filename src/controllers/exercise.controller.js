@@ -3,11 +3,11 @@ const User = require('../models/User');
 const Language = require('../models/Language');
 
 const getExercisesByLanguage = async (req, res) => {
-    const { level=5, languageId } = req.query;
+    const { level=1, languageId } = req.query;
     try {
       let exercises;
       if (level && !isNaN(level)) {
-        exercises = await Exercise.find({ languageId, difficultyLevel: { $lte: parseInt(level) } });
+        exercises = await Exercise.find({ languageId, difficultyLevel: { $gte: parseInt(level) } });
       } else {
         exercises = await Exercise.find({ languageId });
       }

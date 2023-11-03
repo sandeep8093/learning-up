@@ -37,7 +37,7 @@ const login = async (req, res) => {
           isAdmin : user.isAdmin
       };
   
-      jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 36000 }, (err, token) => {
+      jwt.sign(payload, process.env.JWT_SECRET, (err, token) => {
         if (err) throw err;
         res.status(200).json({ token });
       });

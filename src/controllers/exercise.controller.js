@@ -17,6 +17,18 @@ const getExercisesByLanguage = async (req, res) => {
     }
   };
 
+// Controller to fetch one  Exercise
+const getOneExercise = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const exercise = await Exercise.findById(id);
+    res.status(200).json(exercise);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+
 // Controller to add a new exercise
 const addExercise = async (req, res) => {
   const { languageId, difficultyLevel, question, options, correctAnswer } = req.body;
@@ -127,5 +139,6 @@ module.exports = {
   addExercise,
   updateExercise,
   deleteExercise,
-  submitAnswer
+  submitAnswer,
+  getOneExercise
 };
